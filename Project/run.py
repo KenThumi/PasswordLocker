@@ -143,11 +143,11 @@ def main():
                     username = input('Kindly enter your unique username:\n')
                     password = input('Kindly enter your unique password:\n')
 
-                    if checkUsernameTaken( user(username,password) ): #if username taken
+                    if checkUsernameTaken( user(fullname,username,password) ): #if username taken
                         print('Username Taken')
                         break
                     else:
-                        registerUser( user(username,password))
+                        registerUser( user(fullname,username,password))
                         print('Registered, Kindly login.')
                         break
 
