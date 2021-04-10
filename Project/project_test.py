@@ -38,5 +38,25 @@ class TestProject(unittest.TestCase):
         
         self.assertTrue(self.user.checkUsernameTaken())
 
+    
+    def test_addCredential(self):
+        ''' test whether addCredential method works'''
+        self.user.registerUser() #register user
+        self.user.users[self.user.username]['credentials'] = {'appName':'instagram',
+                                                    'password':'appPassword'} #add one app creds directly
+
+        self.user.addCredential('facebook','fbpwd')  #add creds using class method
+
+        self.assertEqual( len(User.users[self.user.username]['credentials']), 2)
+
+
+    def test_checkCredsExists(self):
+        '''test whether checkCredsExists method works accordingly'''
+        self.user.registerUser() #register user
+        self.user.addCredential('facebook','fbpwd')  #add creds using class method
+
+        self.assertTrue(self.user.checkCredsExists('facebook')) #should return true since facebook was inserted
+
+
 if __name__ == '__main__':
     unittest.main()

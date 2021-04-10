@@ -33,7 +33,19 @@ class User():
         return self.username in User.users.keys()
    
 
+    def addCredential(self,application,appPassword):
+        '''adds an app credetials'''
+        self.users[self.username]['credentials'] = {'appName':application.lower(),
+                                                    'password':appPassword}
 
+
+    def checkCredsExists(self,application):
+        '''Checks whether or not application credentials are exists'''
+        if self.users[self.username].get('credentials') != None:
+            return application.lower() in self.users[self.username]['credentials'].values()
+        else:
+            return False
+                                    
 
 # class Credentials:
 #     '''Class to manage all credential matters'''
@@ -42,10 +54,13 @@ class User():
 
 
 
-# obj = User('ken thums','thumise','hsajkhah')
+obj = User('ken thums','thumise','hsajkhah')
+obj.registerUser()
 
+obj.addCredential('facebookk','loremipsum')
+#print(obj.users[obj.username]['credentials'])
 # obj.registerUser()
-# print(str(obj.users))
+print(obj.checkCredsExists('facebook'))
 
 #print('password' in  obj.users['password'] )
 
