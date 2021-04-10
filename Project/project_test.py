@@ -58,5 +58,13 @@ class TestProject(unittest.TestCase):
         self.assertTrue(self.user.checkCredsExists('facebook')) #should return true since facebook was inserted
 
 
+
+    def test_generateAppPwd(self):
+        '''check whether generateAppPwd works - generates password'''
+        pwd = self.user.generateAppPwd()
+
+        self.assertEqual(len(pwd),10)    # 10 being default pwd length
+
+
 if __name__ == '__main__':
     unittest.main()
