@@ -50,6 +50,10 @@ def copyCredential(user,application):
     return user.copyCredential(application)
 
 
+def deleteCredential(user,application):
+    '''Delete a particular application password pair from credentials'''
+    return user.deleteCredential(application)
+
 def main():
 
     while True:
@@ -163,7 +167,21 @@ def main():
                                 continue
 
                     elif action == 'dc':
-                        pass 
+                        while True:
+                            application = input("Enter the application to delete:\n").lower()
+                            if application != '':
+                                delApp = deleteCredential(user(fullname,username,password),application)
+
+                                if delApp:
+                                    print(f'{application.capitalize()} and password pair deleted.')
+                                    exit()
+                                else:
+                                    print('Application credentials non-existent')
+                                    continue
+
+                            else:
+                                print("Empty application name")
+                                continue
                     elif action == 'exit':
                         pass 
                     else:
