@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-# from credentials import Credentials
 from user import User
 
 
@@ -66,10 +65,10 @@ def main():
             username = input('Kindly enter your username:\n')
             password = input('Kindly enter your password:\n')
 
-            # user = Credentials(username,password)
-            while True:
-                if checkRegistered( user(fullname,username,password) ):
-                    #what you need with the app
+            if checkRegistered( user(fullname,username,password) ):
+                #what you need with the app
+                while True:
+                    print('-'*44)
                     action = input("Choose what you need as below:\n--------------------------------------------\n-To--Create New Credentials--choose: CNC \n-To--View Credential(s)--choose: VC \n-To--Copy Credential--choose: CC \n-To--Delete Credentials--choose: DC \n-To--Exit--choose: EXIT \n--------------------------------------------\n").lower()
 
                     if action == 'cnc':
@@ -81,7 +80,7 @@ def main():
 
                                 if generatePwd == 'yes':
                                     while True:
-                                        pwdlen = input('Would you like to add length? choose yes or no\n')
+                                        pwdlen = input('Would you like to give password length? choose yes or no\n')
 
                                         if pwdlen == 'yes':
                                             while True:
@@ -120,7 +119,7 @@ def main():
                                         if pwd != '':
                                             addCredential(user(fullname,username,password),application,pwd)
 
-                                            print(f"Successful,{application} generated pwd:{pwd} \n")
+                                            print(f"Successful,{application} added,pwd given :{pwd} \n")
 
                                             exit()
                                         else:
@@ -183,12 +182,14 @@ def main():
                                 print("Empty application name")
                                 continue
                     elif action == 'exit':
-                        pass 
+                        print('Goodbye')
+                        exit()
                     else:
-                        pass
-                else:
-                    print('You are not registered.')
-                    break
+                        print('Wrong input.')
+                        continue
+            else:
+                print('You are not registered.')
+                break
         
         # when not registered
         elif registered == 'no':

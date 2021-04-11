@@ -13,7 +13,7 @@ class User():
         data = handle.read()
 
         if data != '':
-            users = ast.literal_eval(data)
+            users = ast.literal_eval(data) #str ti dict
 
 
     def __init__(self,fullname,username, password):
@@ -28,7 +28,7 @@ class User():
         return self.username in User.users.keys() and self.password == User.users[self.username ]['password']
 
 
-    def registerUser(self): #write
+    def registerUser(self): 
         '''Registers a new user'''
         self.users[self.username] = {'password':self.password,'fullname':self.fullname}
         
@@ -41,7 +41,7 @@ class User():
         return self.username in User.users.keys()
    
 
-    def addCredential(self,application,appPassword): #write
+    def addCredential(self,application,appPassword): 
         '''adds an app credetials'''
         if self.users[self.username].get('credentials') != None:
             self.users[self.username]['credentials'].update({application.lower():appPassword})
@@ -116,18 +116,6 @@ class User():
 
 
 
-
-#obj = User('Kenneth Mwangi Thumi','kenneth','password')
-#obj.registerUser()
-
-#obj.generateAppPwd()
-
-#print(obj.users[obj.username]['credentials'])
-# obj.registerUser()
-# print( len(obj.getAllUserCredentials()) )
-# for key,value in obj.getAllUserCredentials().items():
-#     print(f"Application :{key} ,Password :{value}")
-#     print('-' * 60)
 
 
 
