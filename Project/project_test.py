@@ -1,6 +1,6 @@
 
 import unittest
-# from credentials import Credentials
+import pyperclip
 from user import User
 
 class TestProject(unittest.TestCase):
@@ -67,7 +67,6 @@ class TestProject(unittest.TestCase):
 
     def test_getAllUserCredetials(self):
         '''test whether getAllUserCredential method work without errors'''
-        User.users = {}
         self.user.registerUser() #register user
         self.user.addCredential('facebook','fbpwd') #add one credential
 
@@ -82,6 +81,16 @@ class TestProject(unittest.TestCase):
         self.user.deleteCredential('facebook')
 
         self.assertEqual(len(self.user.users[self.user.username]['credentials']),1 )
+
+
+    def test_copyCredential(self):
+        '''test copyCredential  method work without errors'''
+        self.user.registerUser() #register user
+        self.user.addCredential('facebook','fbpwd') #add one credential
+        self.user.copyCredential('facebook')        #copy facebook password
+
+        self.assertEqual('fbpwd',pyperclip.paste() )
+
 
 if __name__ == '__main__':
     unittest.main()

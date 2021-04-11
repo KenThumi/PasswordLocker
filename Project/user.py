@@ -2,16 +2,10 @@ import random
 import secrets
 import string
 import ast
+import pyperclip
 
 class User():
     '''User class to manage users'''
-
-
-    # def __init__(self,username):
-    #     '''Initialize every user with a username'''
-
-    #     self.username = username
-    
 
     users = {}     # main dictionary to handle all credentials
 
@@ -108,13 +102,22 @@ class User():
 
 
 
+    def copyCredential(self,application):
+        '''Copys credential pair to clipboard'''
+        if self.checkCredsExists(application) != False:
+            pwd = self.users[self.username]['credentials'].get(application)
+            pyperclip.copy(pwd)
+        else:
+            return False
+
+
+
+
 
 obj = User('Kenneth Mwangi Thumi','kenneth','password')
 #obj.registerUser()
 
 #obj.generateAppPwd()
-
-print( obj.deleteCredential('instagram') )
 
 #print(obj.users[obj.username]['credentials'])
 # obj.registerUser()
