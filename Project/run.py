@@ -44,6 +44,12 @@ def getAllUserCredentials(user):
     '''Gets a list of all credentials'''
     return user.getAllUserCredentials()
 
+
+def copyCredential(user,application):
+    '''Copys credential pair to clipboard'''
+    return user.copyCredential(application)
+
+
 def main():
 
     while True:
@@ -140,7 +146,22 @@ def main():
                         else:
                             print('No Records Found')
                     elif action == 'cc':
-                        pass 
+                        while True:
+                            application = input('Enter application\'s password you want to copy:\n' ).lower()
+
+                            if application != '':
+                                copyPwd = copyCredential(user(fullname,username,password), application)
+
+                                if copyPwd != False:
+                                    print(f'{application.capitalize()} password copied to clip, paste in your desired location')
+                                    exit()
+                                else:
+                                    print('Application credentials non-existent')
+                                    continue
+                            else:
+                                print('Empty application name')
+                                continue
+
                     elif action == 'dc':
                         pass 
                     elif action == 'exit':
