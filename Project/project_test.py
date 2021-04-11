@@ -73,5 +73,15 @@ class TestProject(unittest.TestCase):
 
         self.assertEqual( len(self.user.users[self.user.username]['credentials']), len(self.user.getAllUserCredentials()) )
 
+
+    def test_deleteCredential(self):
+        '''test deleteCredential  method work without errors'''
+        self.user.registerUser() #register user
+        self.user.addCredential('facebook','fbpwd') #add one credential
+        self.user.addCredential('twitter','twpwd') #add 2nd credential
+        self.user.deleteCredential('facebook')
+
+        self.assertEqual(len(self.user.users[self.user.username]['credentials']),1 )
+
 if __name__ == '__main__':
     unittest.main()

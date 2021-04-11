@@ -97,7 +97,12 @@ class User():
     def deleteCredential(self,application):
         '''Delete a particular application password pair from credentials'''
         if self.checkCredsExists(application) != False:
-            pass
+            self.users[self.username]['credentials'].pop(application)
+            
+            with open('users.txt','w') as handle:
+                handle.write( str(self.users) ) #persist data
+
+            return True
         else:
             return False
 
@@ -105,11 +110,11 @@ class User():
 
 
 obj = User('Kenneth Mwangi Thumi','kenneth','password')
-obj.registerUser()
+#obj.registerUser()
 
 #obj.generateAppPwd()
-obj.addCredential('facebook','loremipsum')
-obj.addCredential('instagram','instaPass')
+
+print( obj.deleteCredential('instagram') )
 
 #print(obj.users[obj.username]['credentials'])
 # obj.registerUser()
