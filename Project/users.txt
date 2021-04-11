@@ -1,1 +1,0 @@
-{'RandomName': {'password': 'RandomPa$$w@rd', 'fullname': 'Random Name'}, 'johndoe': {'password': 'JohnDoe1&', 'fullname': 'John Doe'}}

@@ -13,6 +13,8 @@ class TestProject(unittest.TestCase):
 
     def tearDown(self):
         '''tearDown method that does clean up after each test case has run'''
+        with open('users.txt','w') as handle:
+            data = handle.write('')
 
         User.users = {}
 

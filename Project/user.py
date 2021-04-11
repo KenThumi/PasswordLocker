@@ -15,12 +15,14 @@ class User():
         if data != '':
             users = ast.literal_eval(data)
 
+
     def __init__(self,fullname,username, password):
         '''Initialize each user with username,password'''
         self.fullname = fullname
         self.username = username
         self.password = password
     
+
     def checkRegistered(self): 
         '''Method check if one is registered'''
         return self.username in User.users.keys() and self.password == User.users[self.username ]['password']
@@ -33,7 +35,6 @@ class User():
         with open('users.txt','w') as handle:
             handle.write( str(self.users) ) #persist data
     
-
 
     def checkUsernameTaken(self):
         '''Checks whether or not the username is taken'''
@@ -99,7 +100,6 @@ class User():
             return True
         else:
             return False
-
 
 
     def copyCredential(self,application):
