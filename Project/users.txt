@@ -1,1 +1,1 @@
-{'kenneth': {'password': 'password', 'fullname': 'Kenneth Mwangi Thumi', 'credentials': {'appName': 'facebook', 'password': 'Y+BoStR91mnHJaY'}}}
+{'RandomName': {'password': 'RandomPa$$w@rd', 'fullname': 'Random Name'}, 'johndoe': {'password': 'JohnDoe1&', 'fullname': 'John Doe'}}

@@ -42,8 +42,7 @@ class TestProject(unittest.TestCase):
     def test_addCredential(self):
         ''' test whether addCredential method works'''
         self.user.registerUser() #register user
-        self.user.users[self.user.username]['credentials'] = {'appName':'instagram',
-                                                    'password':'appPassword'} #add one app creds directly
+        self.user.users[self.user.username]['credentials']={'instagram':'appPassword'} #add one app creds directly
 
         self.user.addCredential('facebook','fbpwd')  #add creds using class method
 
@@ -65,6 +64,14 @@ class TestProject(unittest.TestCase):
 
         self.assertEqual(len(pwd),10)    # 10 being default pwd length
 
+
+    def test_getAllUserCredetials(self):
+        '''test whether getAllUserCredential method work without errors'''
+        User.users = {}
+        self.user.registerUser() #register user
+        self.user.addCredential('facebook','fbpwd') #add one credential
+
+        self.assertEqual( len(self.user.users[self.user.username]['credentials']), len(self.user.getAllUserCredentials()) )
 
 if __name__ == '__main__':
     unittest.main()

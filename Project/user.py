@@ -48,8 +48,10 @@ class User():
 
     def addCredential(self,application,appPassword): #write
         '''adds an app credetials'''
-        self.users[self.username]['credentials'] = {'appName':application.lower(),
-                                                    'password':appPassword}
+        if self.users[self.username].get('credentials') != None:
+            self.users[self.username]['credentials'].update({application.lower():appPassword})
+        else:
+            self.users[self.username]['credentials'] = {application.lower():appPassword}
 
         with open('users.txt','w') as handle:
             handle.write( str(self.users) ) #persist data
@@ -58,7 +60,7 @@ class User():
     def checkCredsExists(self,application):
         '''Checks whether or not application credentials are exists'''
         if self.users[self.username].get('credentials') != None:
-            return application.lower() in self.users[self.username]['credentials'].values()
+            return application.lower() in self.users[self.username]['credentials'].keys()
         else:
             return False
 
@@ -87,17 +89,34 @@ class User():
         return password
 
 
+    def getAllUserCredentials(self):
+        '''Gets a list of all credentials'''
+        return self.users[self.username]['credentials']
+
+
+    def deleteCredential(self,application):
+        '''Delete a particular application password pair from credentials'''
+        if self.checkCredsExists(application) != False:
+            pass
+        else:
+            return False
 
 
 
-# obj = User('ken thum','thumishghge','hsajkhah')
-# obj.registerUser()
-# obj.users
+
+obj = User('Kenneth Mwangi Thumi','kenneth','password')
+obj.registerUser()
+
 #obj.generateAppPwd()
-#obj.addCredential('facebookk','loremipsum')
+obj.addCredential('facebook','loremipsum')
+obj.addCredential('instagram','instaPass')
+
 #print(obj.users[obj.username]['credentials'])
 # obj.registerUser()
-#print(obj.checkCredsExists('facebook'))
+# print( len(obj.getAllUserCredentials()) )
+# for key,value in obj.getAllUserCredentials().items():
+#     print(f"Application :{key} ,Password :{value}")
+#     print('-' * 60)
 
 
 
