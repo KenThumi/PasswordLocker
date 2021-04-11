@@ -8,6 +8,9 @@ password upon creation if user opts so.
 ## Author
 - [Kenneth Thumi](https://github.com/KenThumi)
 
+## Contact
+Email:kenthumi@gmail.com
+
 ## Setup instructions
 Below are steps to follow:
 1. Open cli, navigate to your project folder and clone the project: 
@@ -21,6 +24,8 @@ Below are steps to follow:
 In this project, below is a list of technologies used:
 - [Python version 3](https://www.python.org/)
 
+## Dependencies Packages
+Random, Secrets, String, Ast, Pyperclip
 
 ## License info
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
