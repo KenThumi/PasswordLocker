@@ -1,0 +1,1 @@
+{'kenneth': {'password': 'password', 'fullname': 'Kenneth Mwangi Thumi', 'credentials': {'facebook': 'Y+BoStR91mnHJaY', 'instagram': 'jjjjsjka'}}}

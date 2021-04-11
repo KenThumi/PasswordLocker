@@ -86,7 +86,10 @@ class User():
 
     def getAllUserCredentials(self):
         '''Gets a list of all credentials'''
-        return self.users[self.username]['credentials']
+        if 'credentials' in self.users[self.username].keys(): #does user have any credentials
+            return self.users[self.username]['credentials']
+        else:
+            return False
 
 
     def deleteCredential(self,application):
@@ -114,7 +117,7 @@ class User():
 
 
 
-obj = User('Kenneth Mwangi Thumi','kenneth','password')
+#obj = User('Kenneth Mwangi Thumi','kenneth','password')
 #obj.registerUser()
 
 #obj.generateAppPwd()

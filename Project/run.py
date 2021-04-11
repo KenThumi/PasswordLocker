@@ -39,6 +39,11 @@ def addCredential(user,application,appPwd):
     '''adds an app credetials'''
     user.addCredential(application,appPwd)
 
+
+def getAllUserCredentials(user):
+    '''Gets a list of all credentials'''
+    return user.getAllUserCredentials()
+
 def main():
 
     while True:
@@ -120,7 +125,20 @@ def main():
                             print( '-'*28)
 
                     elif action == 'vc':
-                        pass
+                        #lists all credentials
+                        credentials = getAllUserCredentials(user(fullname,username,password))
+                        if credentials != False:
+                            print("-"*60)
+                            print("Below are your Credentials")
+                            print("-"*60)
+
+                            for key,value in credentials.items():
+                                print(f">>>>>Application :{key} ,Password :{value}")
+                                print('-' * 60)
+
+                            exit()
+                        else:
+                            print('No Records Found')
                     elif action == 'cc':
                         pass 
                     elif action == 'dc':
